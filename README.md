@@ -18,11 +18,19 @@
 #### Standalone
 
 1. Go to project root directory
-2. Install dependencies using command
+2. Create a virtual environment
+
+    `virtualenv localenv`
+
+3. Activate virtualenv
+
+    `source localenv/bin/activate`
+
+4. Install dependencies using command
 
     `pip install -r requirements.txt`
 
-3. Start the application using command
+5. Start the application using command
 
     `python manage.py runserver`
 
