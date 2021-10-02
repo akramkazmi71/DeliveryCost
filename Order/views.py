@@ -20,7 +20,7 @@ def calculate_amount(request):
         for i in order_items:
             total += i['quantity'] * i['price']
         distance = payload['distance'] / 1000
-        delivery_cost = get_delivery_cost(distance)
+        delivery_cost = get_delivery_cost_of_item(distance)
         if 'offer' in payload and bool(payload['offer']):
             offer = payload['offer']
             if checkMin(offer['offer_val'], total) and offer['offer_type'] != 'DELIVERY':
@@ -30,9 +30,11 @@ def calculate_amount(request):
             total += delivery_cost
         response = {'order_total': total}
         return HttpResponse(str(response))
+    else:
+        print("Not a POST call")
         
         
-def get_delivery_cost(distance):
+def get_delivery_cost_of_item(distance):
     f = open('Config/delivery_cost.json', 'r')
     delivery_cost = json.load(f)
     for i in delivery_cost:
