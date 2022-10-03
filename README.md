@@ -9,7 +9,7 @@
 
     `docker build . -t delivery-cost`
 
-    > This will create image
+    > This will create a docker image
 
 4. Run container
 
